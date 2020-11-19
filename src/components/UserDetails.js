@@ -1,42 +1,35 @@
-import React, { useState, useEffect } from 'react'
-import { User, Post } from '../js/request'
+import React, { useState, useEffect } from 'react';
+import { User, Post } from '../js/request';
 
 export const UserDetails = (props) => {
 
-
   const [user, setUser] = useState();
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
 
   const getUserInfo = async () => {
-    const userInfo = await User.getOne(props.match.params.id)
-    console.log("getUserInfo -> userInfo", userInfo);
-    setUser(userInfo)
-    const postInfo = await Post.getOne(props.match.params.id)
-    console.log("getUserInfo -> postInfo", postInfo);
-    setPosts(postInfo)
-  }
+    const userInfo = await User.getOne(props.match.params.id);
+    setUser(userInfo);
+    const postInfo = await Post.getOne(props.match.params.id);
+    setPosts(postInfo);
+  };
 
   useEffect(() => {
     getUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   if (user) {
-
     return (
       <div className="UserDetails">
-        <h3 className="header user-header"><spam className="back-link" onClick={() => { props.history.push('/users') }}> Users</spam>  &gt; {user.name}</h3>
+        <h3 className="header user-header"><span className="back-link" onClick={() => { props.history.push('/users') }}> Users</span>  &gt; {user.name}</h3>
         <div className="info-div">
 
           <div className='details-div'>
             <h4 className="secondary-header"> Contact Info </h4>
             <p> Username: {user.username}</p>
             <p>Email: <a href={`mailto:${user.email}`} className="email">  {user.email}</a></p>
-
             <p>Phone: <a href={`tel:+${user.phone}`}>  {user.phone}</a></p>
-
-            <p>Website: <a href={user.website} target="_blank"> {user.website}</a> </p>
-
+            <p>Website: <a href={user.website} target="_blank" rel="noreferrer"> {user.website}</a> </p>
           </div>
 
           <div className='details-div'>
@@ -53,20 +46,19 @@ export const UserDetails = (props) => {
 
         </div>
 
-        {/* <div className="post-contener" > */}
-          <h3 className="header user-header"> Posts by {user.name}</h3>
-          <div className="posts-div">
-            {posts.map(post => (
-              <div key={post.id} className="post">
-                <p className="secondary-header">{post.title} </p>
-                <p>{post.body}</p>
-              </div>
-            ))}
-          </div>
-        {/* </div> */}
+        <h3 className="header user-header"> Posts by {user.name}</h3>
+        <div className="posts-div">
+          {posts.map(post => (
+            <div key={post.id} className="post">
+              <p className="secondary-header">{post.title} </p>
+              <p>{post.body}</p>
+            </div>
+          ))}
+        </div>
+
       </div>
     )
   } else {
     return <p> Loading Page</p>
-  }
-}
+  };
+};

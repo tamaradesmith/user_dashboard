@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
-import { User } from '../js/request'
+import { User } from '../js/request';
 
-export const UserDashboard = (props) => {
+export const UserList = (props) => {
 
   const [users, setUsers] = useState([]);
   const [searchValue, setSearchValue] = useState('');
@@ -28,16 +28,16 @@ export const UserDashboard = (props) => {
   };
 
   const filterUsers = () => {
-    const result = []
+    const result = [];
     users.forEach(user => {
       if (user[searchType].toLowerCase().includes(`${searchValue.toLowerCase()}`) || searchValue.length === 0) {
-        result.push(user)
+        result.push(user);
       };
     });
 
     return result.map((user) => {
       return (
-        <div key={user.id} className="user-div" >
+        <div key={user.id} className="user-div">
           <div className='user-picture' />
           <div className="info"  >
             <p className='name' onClick={() => {
@@ -61,13 +61,15 @@ export const UserDashboard = (props) => {
 
   useEffect(() => {
     filterUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [users]);
 
   return (
-    <div className="UserDashboard">
-      <div className="nav">
+    <div className="UserList">
 
+      <div className="nav">
         <h2 className="header"> Users</h2>
+        
         <label htmlFor="search" className="input-label">Search</label>
         <input type="text" id="search" className="input-field" onChange={handleFilter} />
 
@@ -77,6 +79,7 @@ export const UserDashboard = (props) => {
           <option value='username' defaultValue>Username</option>
           <option value='email' defaultValue>Email</option>
         </select>
+        
       </div>
 
       <div className='user-list'>

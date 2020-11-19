@@ -7,7 +7,7 @@ export const User = {
       return res.json();
     } catch (error) {
       return error;
-    }
+    };
   },
   async getOne(id) {
     try {
@@ -15,21 +15,19 @@ export const User = {
       return res.json();
     } catch (error) {
       return error;
-    }
+    };
   },
 };
-
-// http://jsonplaceholder.typicode.com/posts?userId=1
 
 export const Post = {
   async getOne(userId) {
     try {
-      const res = await fetch(`${BASE_URL}/posts?userId=${userId}`)
-      return res.json()
+      const res = await fetch(`${BASE_URL}/posts?userId=${userId}`);
+      return res.json();
     } catch (error) {
       return error
-    }
-  }
-}
+    };
+  },
+};
 
 

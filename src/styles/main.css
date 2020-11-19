@@ -1,5 +1,4 @@
 @import url("./reset.css");
-/* @import url("href=https://fonts.googleapis.com/css2?family=Roboto&display=swap"); */
 
 :root {
   --font-colour: #474747;
@@ -12,27 +11,31 @@ body {
   width: 100vw;
   padding: 0.5em 0;
   color: var(--font-colour);
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-
 input,
 select {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  color: var(--font-colour);
 }
-
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background: transparent;
+  color: var(--font-colour);
 }
-
 a {
   text-decoration: none;
   color: #009fbb;
 }
-
+a:hover,
+.back-link:hover,
+.name:hover,
+.username:hover {
+  cursor: pointer;
+}
 .back-link {
   color: #009fbb;
   font-weight: 900;
@@ -53,7 +56,6 @@ a {
   font-weight: 700;
   margin: 0.75em 0;
 }
-
 .input-label {
   font-weight: 700;
   margin-bottom: 0.1em;
@@ -65,7 +67,6 @@ a {
   padding: 0.25em;
   height: 30px;
 }
-
 .user-div {
   border-bottom: 1px solid var(--primary_background);
   display: flex;
@@ -75,7 +76,6 @@ a {
 .user-div:nth-child(odd) {
   background: var(--secondary-backgroud);
 }
-
 .user-picture {
   width: 60px;
   height: 60px;
@@ -83,34 +83,29 @@ a {
   border-radius: 50%;
   background: var(--primary_background);
 }
-
 .name {
   text-transform: capitalize;
 }
 .italic {
   font-style: italic;
 }
-
-/* User Details */
-
 .details-div {
   display: flex;
   flex-direction: column;
   margin-bottom: 1em;
   padding-left: 0.75em;
+  line-height: 1.3em;
 }
 .user-header {
   padding-left: 0.6em;
 }
-
 .posts-contener {
   margin-top: 1.25em;
   border-top: 1px solid var(--primary_background);
 }
-
 .post {
   border-bottom: 1px solid var(--primary_background);
-  padding: 0.5em 0.75em 1em
+  padding: 0.5em 0.75em 1em;
 }
 
 @media (min-width: 800px) {
@@ -133,7 +128,6 @@ a {
   .input-label {
     grid-row: 1/2;
   }
-
   .user-list {
     border: 1px solid var(--primary_background);
   }
@@ -155,23 +149,22 @@ a {
     vertical-align: middle;
     padding-right: 0.75em;
   }
-
-  /* USER DETAILS  */
-  .info-div{
+  .info-div {
     display: flex;
   }
-  .details-div, .post{
+  .details-div,
+  .post {
     border: 1px solid var(--primary_background);
-    margin: 0.3em;
+    margin: 0 0.3em 0.5em;
     padding: 0.5em;
     width: 28%;
   }
-  .posts-div{
+  .posts-div {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
   .user-header {
-  margin-top: 1.5em;
-}
+    margin: 1.25em 0 1em;
+  }
 }
